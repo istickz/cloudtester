@@ -19,3 +19,4 @@ group :development, :test do
 end
 gem "database_cleaner", group: :test
 gem 'factory_girl_rails', group: :test
+gem "figaro"
