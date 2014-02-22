@@ -20,3 +20,5 @@ end
 gem "database_cleaner", group: :test
 gem 'factory_girl_rails', group: :test
 gem "figaro"
+gem 'bootstrap-sass', '~> 3.0.3.0'
+gem "font-awesome-rails"
