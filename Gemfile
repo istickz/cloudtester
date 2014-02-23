@@ -22,3 +22,6 @@ gem "figaro"
 gem 'bootstrap-sass', '~> 3.0.3.0'
 gem "font-awesome-rails"
 gem 'simple_form'
+
+gem 'devise'
+gem "pundit"
