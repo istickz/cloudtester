@@ -21,3 +21,4 @@ gem 'factory_girl_rails', group: :test
 gem "figaro"
 gem 'bootstrap-sass', '~> 3.0.3.0'
 gem "font-awesome-rails"
+gem 'simple_form'
