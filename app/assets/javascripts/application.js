@@ -14,3 +14,6 @@
 //= require jquery_ujs
 //= require_tree ./application
 //= require bootstrap
+//= require bootstrap-wysihtml5/b3
+//= require bootstrap-wysihtml5/locales/ru-RU
+//= require jquery.ui.sortable

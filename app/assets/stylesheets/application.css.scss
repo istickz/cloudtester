@@ -10,6 +10,9 @@
  *
  *= require_self
  *= require_tree ./application
+ *= require font-awesome
+ *= require bootstrap-wysihtml5/b3
+ *= require jquery.ui.all
  */
 
 @import "bootstrap";
@@ -39,6 +42,7 @@ textarea {
 body {
     font-size: 1em;
     line-height: 1.4;
+    margin-top: 50px;
 }
 
 /*
@@ -99,7 +103,7 @@ body {
 }
 
 body {
-    font-family: "Lato";
+    font-family: "Exo 2";
     font-weight: 300;
     font-size: 16px;
     color: #555;
@@ -459,7 +463,7 @@ a:after {
 }
 
 .service-active p {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Exo 2', sans-serif;
   padding-top: 10px;
 }
 

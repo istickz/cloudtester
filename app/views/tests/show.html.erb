@@ -1,0 +1,25 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+  <h1>
+    <%= @test.name %>
+    <small>
+      <small>
+        <%= link_to 'Ред. название', edit_test_path(@test), class: "label label-default" %>
+        <%= link_to 'Удалить', @test, method: :delete, data: {confirm: 'Вы уверены?'}, class: "label label-default" %>
+      </small>
+    </small>
+  </h1>
+
+  <% if @test.questions.blank? %>
+      <h3>Вы пока не создали ни одного вопроса</h3>
+  <% else %>
+      <h3>Вопросы к тесту:</h3>
+      <%= render partial: "questions/questions", locals: {questions: @test.questions} %>
+  <% end %>
+
+  <%= link_to 'Добавить вопрос', new_test_question_path(@test) %> |
+  <%= link_to 'Вернуться назад', tests_path %>
+
+</div>
+

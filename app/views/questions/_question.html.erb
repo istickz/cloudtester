@@ -1,0 +1,41 @@
+<div class="question">
+  <div class="question-heading">
+    <div class="question-controls btn-group">
+
+      <%= link_to edit_test_question_path(question.test,question), class: "btn btn-default" do %>
+          <span class="glyphicon glyphicon-pencil"></span>
+      <% end %>
+
+      <%= form_tag("/tests/#{question.test_id}/questions/reorder", method: "post") do %>
+          <%= hidden_field_tag(:question, question.id) %>
+          <%= hidden_field_tag(:course, "down") %>
+          <%= button_tag(type: 'submit', class: "btn btn-default down") do %>
+              <i class="fa fa-level-down"></i>
+          <% end %>
+      <% end %>
+
+      <%= form_tag("/tests/#{question.test_id}/questions/reorder", method: "post") do %>
+          <%= hidden_field_tag(:question, question.id) %>
+          <%= hidden_field_tag(:course, "up") %>
+          <%= button_tag(type: 'submit', class: "btn btn-default up") do %>
+              <i class="fa fa-level-up"></i>
+          <% end %>
+      <% end %>
+
+
+      <%= link_to test_question_path(question.test,question), method: :delete, data: {confirm: 'Вы уверены?'}, class: "btn btn-default" do %>
+          <span class="glyphicon glyphicon-remove"></span>
+      <% end %>
+
+
+    </div>
+    <h3 class="question-title">Вопрос <%= question.position %></h3>
+    <div class="question-body">
+      <%= raw question.content %>
+    </div>
+    <div class="question-options">
+      <h4>Варианты ответов:</h4>
+      <%= render partial: "questions/question_options", locals: {question: question} %>
+    </div>
+  </div>
+</div>

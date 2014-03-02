@@ -1,0 +1,5 @@
+<div class="container">
+  <h1>Вопросы к тесту</h1>
+  <%= render partial: "questions", locals: {questions: @questions} %>
+  <%= link_to 'Добавить вопрос', new_test_question_path %>
+</div>
