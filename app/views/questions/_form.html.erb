@@ -1,11 +1,10 @@
-<%= simple_form_for([ @question.test, @question]) do |f| %>
+<%= simple_form_for([@question.test, @question], url: (test_question_path(@question.test, @question.position) if @question.position)) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">
       <h3>Вопрос: </h3>
       <%= f.hidden_field :test_id %>
       <%= f.input :content, as: :text, label: false, :input_html => {class: 'wysihtml5', cols: 50, rows: 5} %>
-
     </div>
 
     <h3>Варианты ответов: </h3>

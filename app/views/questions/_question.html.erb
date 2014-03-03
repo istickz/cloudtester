@@ -1,8 +1,8 @@
 <div class="question">
-  <div class="question-heading">
+
     <div class="question-controls btn-group">
 
-      <%= link_to edit_test_question_path(question.test,question), class: "btn btn-default" do %>
+      <%= link_to edit_test_question_path(question.test,question.position), class: "btn btn-default" do %>
           <span class="glyphicon glyphicon-pencil"></span>
       <% end %>
 
@@ -23,7 +23,7 @@
       <% end %>
 
 
-      <%= link_to test_question_path(question.test,question), method: :delete, data: {confirm: 'Вы уверены?'}, class: "btn btn-default" do %>
+      <%= link_to test_question_path(question.test,question.position), method: :delete, data: {confirm: 'Вы уверены?'}, class: "btn btn-default" do %>
           <span class="glyphicon glyphicon-remove"></span>
       <% end %>
 
@@ -37,5 +37,5 @@
       <h4>Варианты ответов:</h4>
       <%= render partial: "questions/question_options", locals: {question: question} %>
     </div>
-  </div>
+
 </div>

@@ -1,17 +1,14 @@
 .questions {
   padding-bottom: 50px;
   .question {
-    .question-heading {
-      .question-controls {
-        form {
-          button {
-
-            &.up {
-              display: block;
-            }
-            &.down {
-              display: block;
-            }
+    .question-controls {
+      form {
+        button {
+          &.up {
+            display: block;
+          }
+          &.down {
+            display: block;
           }
         }
       }
@@ -29,25 +26,25 @@
     padding-top: 10px;
     padding-bottom: 10px;
   }
-  .question-heading {
-    .question-controls {
-      float: right;
-      form {
-        display: inline;
-        float: left;
-        button {
-          border-radius: 0;
-          &.up {
-            display: none;
-            border-right: none;
-            border-left: none;
-          }
-          &.down {
-            display: none;
-            border-left: none;
-          }
+
+  .question-controls {
+    float: right;
+    form {
+      display: inline;
+      float: left;
+      button {
+        border-radius: 0;
+        &.up {
+          display: none;
+          border-right: none;
+          border-left: none;
+        }
+        &.down {
+          display: none;
+          border-left: none;
         }
       }
     }
   }
+
 }

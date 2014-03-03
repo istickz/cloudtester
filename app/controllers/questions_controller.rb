@@ -28,7 +28,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     respond_to do |format|
       if @question.save
-        format.html { redirect_to test_question_url(question_params[:test_id],@question), notice: 'Вопрос создан успешно.' }
+        format.html { redirect_to test_question_url(question_params[:test_id],@question.position), notice: 'Вопрос создан успешно.' }
         format.json { render action: 'show', status: :created, location: @question }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class QuestionsController < ApplicationController
   def update
     respond_to do |format|
       if @question.update(question_params)
-        format.html { redirect_to test_question_url(question_params[:test_id],@question), notice: 'Вопрос обновлен.' }
+        format.html { redirect_to test_question_path(@question.test, @question.position), notice: 'Вопрос обновлен.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -79,7 +79,7 @@ class QuestionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_question
-      @question = Question.find(params[:id])
+      @question = Question.find_by_position(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
