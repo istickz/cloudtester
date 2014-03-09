@@ -1,5 +1,11 @@
-<div class="container">
-  <h1>Вопросы к тесту</h1>
-  <%= render partial: "questions", locals: {questions: @questions} %>
-  <%= link_to 'Добавить вопрос', new_test_question_path %>
+<div class="bg-primary"><
+  <h1>Вопросы к тесту
+    <%= link_to new_test_question_path, class: "btn btn-lg btn-default right" do %>
+        <span class="glyphicon glyphicon-plus"></span> Добавить вопрос
+    <% end %>
+  </h1>
+</div>
+
+<%= render partial: "questions", locals: {questions: @questions} %>
+
 </div>
