@@ -1,0 +1,18 @@
+<div class="container">
+  <%= simple_form_for :exam, :url => url_for(controller: 'exam', action: 'check') do |f| %>
+      <div class="question">
+        <%= f.hidden_field :test_id, value: @question.test_id%>
+        <%= f.hidden_field :question_id, value: @question.id %>
+        <h3 class="question-title">Вопрос <%= @question.position %></h3>
+
+        <div class="question-body">
+          <%= raw @question.content %>
+        </div>
+        <div class="question-options">
+          <%= f.collection_check_boxes :options, @question.options, :id, :content %>
+        </div>
+
+      </div>
+      <%= f.submit 'Далее' %>
+  <% end %>
+</div>
