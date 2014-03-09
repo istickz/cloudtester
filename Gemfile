@@ -20,10 +20,9 @@ end
 gem "database_cleaner", group: :test
 gem 'factory_girl_rails', group: :test
 gem "figaro"
-gem 'bootstrap-sass', '~> 3.0.3.0'
+gem 'bootstrap-sass', '~> 3.1.1'
 gem "font-awesome-rails"
 gem 'simple_form'
-
 gem 'devise'
 gem "pundit"
 gem 'acts_as_list'
