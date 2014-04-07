@@ -1,0 +1,22 @@
+$("#new-question-modal").html("<%= escape_javascript(render 'new') %>");
+$("#new-question-modal").modal("show");
+$('.wysihtml5').each(function (i, elem) {
+    $(elem).wysihtml5({locale: "ru-RU"});
+});
+
+$('#question_form').change(function () {
+    if ($('#question_user_answer_true').prop('checked')) {
+        $('#user_answer').show();
+    } else {
+        $('#user_answer').hide();
+    }
+    if ($('#question_user_answer_false').prop('checked')) {
+        $('#options').show();
+    } else {
+        $('#options').hide();
+    }
+
+});
+
+
+

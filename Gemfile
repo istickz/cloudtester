@@ -12,6 +12,9 @@ gem 'jbuilder', '~> 1.2'
 group :doc do
   gem 'sdoc', require: false
 end
+group :development do
+  gem "rails-erd"
+end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
@@ -29,3 +32,7 @@ gem 'acts_as_list'
 gem 'russian', '~> 0.6.0'
 gem 'bootstrap-wysihtml5-rails', :require => 'bootstrap-wysihtml5-rails',
     :git => 'git://github.com/Nerian/bootstrap-wysihtml5-rails.git'
+gem "rolify"
+gem "haml-rails"
+gem "rmagick"
+gem 'carrierwave'

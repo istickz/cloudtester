@@ -1,0 +1,5 @@
+$("#new-question-modal").html("<%= escape_javascript(render 'edit') %>");
+$("#new-question-modal").modal("show");
+$('.wysihtml5').each(function (i, elem) {
+    $(elem).wysihtml5({locale: "ru-RU"});
+});

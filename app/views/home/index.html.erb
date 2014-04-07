@@ -1,26 +1,57 @@
 <!-- ==== HEADERWRAP ==== -->
 <div id="headerwrap" name="home">
   <div class="container">
-    <h1><i class="fa fa-pencil-square-o"></i></h1>
 
-    <h1>CloudTest</h1>
-    <hr>
-    <p>Бесплатная платформа для создания и проведения тестов</p>
+
+    <div class="col-sm-7">
+      <%= link_to root_path do %>
+          <%= image_tag "application/big-logo.png", class: "img-responsive", id: "big-logo" %>
+      <% end %>
+
+    </div>
+    <div class="col-sm-4 pull-right">
+
+      <div class="account-box">
+
+        <h3> Добро пожаловать в CloudTester</h3>
+
+        <%= simple_form_for(:user, :url => session_path(:user)) do |f| %>
+            <%= f.error_notification %>
+
+            <div class="form-inputs">
+              <%= f.input :email, :required => true, label: false, :autofocus => true, placeholder: "Email" %>
+              <%= f.input :password, :required => true, label: false, placeholder: "Пароль" %>
+
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit, 'Войдите', class: "btn btn-lg btn-block purple-bg" %>
+            </div>
+
+        <% end %>
+
+        <div class="or-box row-block">
+          <span class="or">Или</span>
+          <%= link_to('Создайте аккаунт', new_user_registration_path, class: "btn btn-primary btn-block") %>
+        </div>
+      </div>
+      <p>Бесплатная платформа для создания и проведения тестов</p>
+
+
+    </div>
   </div>
+
+
 </div><!-- /headerwrap -->
 
-
 <!-- container -->
-
-
-
 
 <!-- ==== TEAM MEMBERS ==== -->
 <div class="container" id="reviews" name="reviews">
   <br>
 
   <div class="row white centered">
-    <h1 class="centered">MEET OUR AWESOME TEAM</h1>
+    <h1 class="centered">Отзывы наших клиентов</h1>
     <hr>
     <br>
     <br>
@@ -30,12 +61,9 @@
 
       <br>
       <h4><b>Сергей Владисславский</b></h4>
-      <a href="#" class="icon icon-twitter"></a>
-      <a href="#" class="icon icon-facebook"></a>
-      <a href="#" class="icon icon-flickr"></a>
 
       <p>Я провожу очень много тренингов и часто приходится проверять знания путем проведения тестов.
-        CloudTest очень помогает мне в составлении и проверке тестов. Спасибо, за то что сделали такую платформу!
+        CloudTester очень помогает мне в составлении и проверке тестов. Спасибо, за то что сделали такую платформу!
       </p>
     </div>
     <!-- col-lg-3 -->
@@ -45,9 +73,6 @@
 
       <br>
       <h4><b>Сергей Петрович</b></h4>
-      <a href="#" class="icon icon-twitter"></a>
-      <a href="#" class="icon icon-facebook"></a>
-      <a href="#" class="icon icon-flickr"></a>
 
       <p>Я занимаюсь репетиторством и у меня очень много учеников. Порой проверка знаний путем продения тестов занимает
         очень много времени</p>
@@ -57,25 +82,19 @@
     <div class="col-lg-3 centered">
       <%= image_tag "application/team/team03.jpg", class: "img img-circle", height: "120px", width: "120px" %>
       <br>
-      <h4><b>Michele Lampa</b></h4>
-      <a href="#" class="icon icon-twitter"></a>
-      <a href="#" class="icon icon-facebook"></a>
-      <a href="#" class="icon icon-flickr"></a>
+      <h4><b>Елена Магилевская</b></h4>
 
-      <p>Я провожу курсы по программированию и CloudTest очень облегчил проверку знаний у моих слушателей. Спасибо
-        разработчикам PrivateTest!</p>
+      <p>Я провожу курсы по программированию и CloudTester очень облегчил проверку знаний у моих слушателей. Спасибо
+        разработчикам CloudTester!</p>
     </div>
     <!-- col-lg-3 -->
 
     <div class="col-lg-3 centered">
       <%= image_tag "application/team/team04.jpg", class: "img img-circle", height: "120px", width: "120px" %>
       <br>
-      <h4><b>Jaye Smith</b></h4>
-      <a href="#" class="icon icon-twitter"></a>
-      <a href="#" class="icon icon-facebook"></a>
-      <a href="#" class="icon icon-flickr"></a>
+      <h4><b>Анзорик Рекордов</b></h4>
 
-      <p>Я семейный консультант и CloudTest помогает собирать мне информацию о моих клиентах и помогать им решать сои
+      <p>Я семейный консультант и CloudTester помогает собирать мне информацию о моих клиентах и помогать им решать сои
         проблемы.</p>
     </div>
     <!-- col-lg-3 -->
@@ -88,15 +107,15 @@
 <div id="greywrap">
   <div class="container" id="contact" name="contact">
     <div class="row">
-      <div class="col-lg-8 centered">
-        <%= image_tag "application/macbook.png", class: "img-responsive" %>
+      <div class="col-lg-4 col-lg-offset-2">
+        <%= image_tag "application/mail-icon.png", class: "img-responsive" %>
       </div>
       <div class="col-lg-4">
         <h2>У вас новые идеи или пожелания?</h2>
 
         <p>Напишите нам. Мы всегда готовы двигаться в будущее.</p>
 
-        <p><a class="btn btn-success">Написать нам</a></p>
+        <p><a class="btn btn-primary">Напишите нам</a></p>
       </div>
     </div>
     <!-- row -->

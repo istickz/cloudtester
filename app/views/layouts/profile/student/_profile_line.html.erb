@@ -1,0 +1,29 @@
+<div id="profile_line">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3" id="avatar_box">
+        <%= if current_user.avatar?
+              image_tag(current_user.avatar_url(:thumb), height: "120px", class: "img img-circle")
+            else
+              link_to "", edit_user_registration_path, class: "img img-circle", id: "add_avatar"
+            end
+        %>
+
+      </div>
+
+      <div class="col-md-6" id="user_info">
+        <span class="username"><%= current_user.name %> <%= current_user.lastname %></span>
+
+        <ul class="user_info">
+          <li>Email: <%= current_user.email %></li>
+          <li>Пройдено тестов: 57</li>
+          <li>Успешных тестов: 42</li>
+        </ul>
+
+      </div>
+      <div class="col-md-3">
+        <%= link_to 'Пройти тест',new_profile_test_path, class: "btn-green" %>
+      </div>
+    </div>
+  </div>
+</div>

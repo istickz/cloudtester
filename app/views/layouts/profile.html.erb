@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru" style="" class=" js no-touch cssanimations csstransitions">
+<head>
+  <title> CloudTest - платформа для создания тестов</title>
+  <%= stylesheet_link_tag "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+
+  <!-- Custom styles for this template -->
+
+
+  <link href="http://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet" type="text/css">
+  <link href='http://fonts.googleapis.com/css?family=Exo+2:400,300,700,300italic,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="assets/js/html5shiv.js"></script>
+  <script src="assets/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+
+<body data-spy="scroll" data-offset="0" data-target="#navbar-main" style="">
+<div id="wrap">
+
+
+  <div id="navbar-main">
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="ct"></span>
+          </button>
+          <a class="navbar-brand hidden-xs hidden-sm" href="#home"><span class="ct"></span></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes"><%= current_user.email %>
+                    <span class="caret"></span></a>
+                  <ul class="dropdown-menu" aria-labelledby="themes">
+
+                    <li><a href="../profile/">Мой профиль</a></li>
+
+
+                    <li class="divider"></li>
+
+                    <li><%= link_to "Выход", destroy_user_session_path, method: :delete %></li>
+
+                  </ul>
+                </li>
+            <% end %>
+
+
+          </ul>
+
+        </div>
+        <!--/.nav-collapse -->
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <% if current_user.trainer? %>
+      <%= render 'layouts/profile/trainer' %>
+  <% elsif current_user.student? %>
+      <%= render 'layouts/profile/student' %>
+  <% end %>
+
+</div>
+
+<div id="footerwrap">
+  <div class="container">
+    <h4> Copyright 2014 CloudTest</h4>
+  </div>
+</div>
+
+
+<!-- Core JavaScript
+================================================== -->
+
+<script>
+    $('.tree-toggle').click(function () {
+        $(this).parent().children('ul.tree').toggle(200);
+    });
+
+</script>
+
+
+</body>
+
+
+</html>

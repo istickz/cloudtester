@@ -1,20 +1,30 @@
 class TestsController < ApplicationController
+  layout "profile"
+
   before_action :set_test, only: [:show, :edit, :update, :destroy]
 
   # GET /tests
   # GET /tests.json
   def index
-    @tests = Test.all
+    @filter = params[:filter]
+    filters = {public: "Открытые тесты", private: "Закрытые тесты", drafts: "Черновики", all: "Все тесты"}
+    if !@filter.nil? && @filter_name = filters[@filter.to_sym]
+      @tests = Test.send(@filter)
+    else
+      @filter_name = filters[:all]
+      @tests = Test.all
+    end
   end
 
   # GET /tests/1
   # GET /tests/1.json
   def show
+   @questions = @test.questions
   end
 
   # GET /tests/new
   def new
-    @test = Test.new
+    @test = current_user.tests.build
   end
 
   # GET /tests/1/edit
@@ -28,8 +38,8 @@ class TestsController < ApplicationController
 
     respond_to do |format|
       if @test.save
-        format.html { redirect_to @test, notice: 'Тест создан' }
-        format.js   {}
+        format.html { redirect_to [:profile, @test], notice: 'Тест создан' }
+        format.js {}
         format.json { render action: 'show', status: :created, location: @test }
       else
         format.html { render action: 'new' }
@@ -63,13 +73,14 @@ class TestsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_test
-      @test = Test.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_test
+    @test = Test.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def test_params
-      params.require(:test).permit(:name)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def test_params
+    params.require(:test).permit(:name)
+  end
 end
+

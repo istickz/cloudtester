@@ -1,0 +1,47 @@
+<%= render 'layouts/profile/trainer/profile_line' %>
+<div id="main" class="container">
+  <div class="row">
+
+    <div class="col-md-3" id="sidebar">
+      <ul class="nav nav-list">
+        <li><label class="tree-toggle nav-header">Мои тесты</label>
+          <ul class="nav nav-list tree">
+            <li><%= link_to "Все", profile_tests_path %></li>
+            <li><%= link_to "Открытые", profile_tests_path(filter: "public") %></li>
+            <li><%= link_to "Приватные", profile_tests_path(filter: "private") %></li>
+            <li><%= link_to "Черновики", profile_tests_path(filter: "drafts") %></li>
+          </ul>
+        </li>
+        </li>
+      </ul>
+
+      <ul class="nav nav-list">
+        <li><label class="tree-toggle nav-header">Настройки</label>
+          <ul class="nav nav-list tree">
+            <li>
+              <%= link_to "Изменить личные данные", edit_user_registration_path %>
+            </li>
+
+          </ul>
+        </li>
+        </li>
+      </ul>
+    </div>
+    <!-- End Sidebar-->
+
+
+    <div id="content" class="col-md-9">
+      <%= render 'layouts/flash' %>
+
+      <%= yield %>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

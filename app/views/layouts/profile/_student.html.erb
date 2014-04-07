@@ -1,0 +1,44 @@
+<%= render 'layouts/profile/student/profile_line' %>
+<div id="main" class="container">
+  <div class="row">
+
+    <div class="col-md-3" id="sidebar">
+      <ul class="nav nav-list">
+        <li><label class="tree-toggle nav-header">Мои тесты</label>
+          <ul class="nav nav-list tree">
+            <li><a href="#">Результаты тестов</a></li>
+            <li><a href="#">Пройденные тесты</a></li>
+            <li><a href="#">Тесты с плохим результатом</a></li>
+          </ul>
+        </li>
+        <li><label class="tree-toggle nav-header">Приглашения</label>
+          <ul class="nav nav-list tree">
+            <li><a href="#">Новые тесты</a></li>
+          </ul>
+        </li>
+
+      </ul>
+
+      <ul class="nav nav-list">
+        <li><label class="tree-toggle nav-header">Настройки</label>
+          <ul class="nav nav-list tree">
+            <li>
+              <%= link_to "Изменить личные данные", edit_user_registration_path %>
+            </li>
+
+          </ul>
+        </li>
+        </li>
+      </ul>
+    </div>
+
+
+
+    <div id="content" class="col-md-9">
+      <%= render 'layouts/flash' %>
+      <%= yield %>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,63 @@
+.account-box
+{
+  border:dashed 5px #428bca;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright:5px;
+  -moz-border-radius-bottomleft:5px;
+  -moz-border-radius-bottomright:5px;
+  -webkit-border-top-left-radius:5px;
+  -webkit-border-top-right-radius:5px;
+  -webkit-border-bottom-left-radius:5px;
+  -webkit-border-bottom-right-radius:5px;
+  border-top-left-radius:5px;
+  border-top-right-radius:5px;
+  border-bottom-left-radius:5px;
+  border-bottom-right-radius:5px;
+  z-index: 3;
+  font-size: 13px !important;
+  font-family: "Helvetica Neue" ,Helvetica,Arial,sans-serif;
+  background-color: rgba(255,255,255,0.7);
+
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+
+
+.forgotLnk
+{
+  margin-top: 10px;
+  display: block;
+}
+
+.purple-bg
+{
+  background-color: #6E329D;
+  color: #fff;
+}
+.or-box
+{
+  position: relative;
+  border-top: 1px solid #dfdfdf;
+  padding-top: 20px;
+  margin-top:20px;
+}
+.or
+{
+  color: #666666;
+  background-color: #ffffff;
+  margin: auto;
+  position: absolute;
+  width: 40px;
+  text-align: center;
+  top: -8px;
+  left: 0;
+  right: 0;
+
+}
+.account-box .btn:hover
+{
+  color: #fff;
+}
+
+

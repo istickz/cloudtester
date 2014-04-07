@@ -1,26 +1,37 @@
-<div class="container">
-  <p id="notice"><%= notice %></p>
 
-  <h1>
+<div id="test_header">
+  <h3>
     <%= @test.name %>
-    <small>
-      <small>
-        <%= link_to 'Ред. название', edit_test_path(@test), class: "label label-default" %>
-        <%= link_to 'Удалить', @test, method: :delete, data: {confirm: 'Вы уверены?'}, class: "label label-default" %>
-      </small>
-    </small>
-  </h1>
+  </h3>
+  <div class="btn-group">
+    <%= link_to edit_profile_test_path(@test) do %>
+        <span class="glyphicon glyphicon-cog"></span> Настройки теста
+    <% end %>
+    <%= link_to profile_test_path(@test), method: :delete, data: {confirm: 'Вы уверены?'} do %>
+        <span class="glyphicon glyphicon-remove"></span> Удалить
+    <% end %>
 
-  <% if @test.questions.blank? %>
-      <h3>Вы пока не создали ни одного вопроса</h3>
-  <% else %>
-      <h3>Вопросы к тесту:</h3>
-      <%= render partial: "questions/questions", locals: {questions: @test.questions} %>
-  <% end %>
+  </div>
+</div>
+<% if @test.questions.blank? %>
+    <h4>Вы пока не создали ни одного вопроса
+    <%= link_to new_profile_test_question_path(@test), {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-window', class: "btn btn-success pull-right"} do %>
+        <span class="glyphicon glyphicon-plus"></span> Добавить вопрос
+    <% end %>
+        </h4>
+<% else %>
+    <h4>Вопросы к тесту:
+    <%= link_to new_profile_test_question_path(@test), {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-window', class: "btn btn-success pull-right"} do %>
+        <span class="glyphicon glyphicon-plus"></span> Добавить вопрос
+    <% end %>
+    </h4>
+    <%= render partial: "questions/index", locals: {questions: @test.questions} %>
+<% end %>
 
-  <%= link_to 'Добавить вопрос', new_test_question_path(@test) %> |
 
-  <%= link_to 'Вернуться назад', tests_path %>
 
+<div id="new-question-modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div>
+<div id="destroy_question" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 </div>
 

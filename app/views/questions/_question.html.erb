@@ -2,7 +2,7 @@
 
     <div class="question-controls btn-group">
 
-      <%= link_to edit_test_question_path(question.test,question.position), class: "btn btn-default" do %>
+      <%= link_to edit_profile_test_question_path(question.test, question.position), class: "btn btn-default", remote: true do %>
           <span class="glyphicon glyphicon-pencil"></span>
       <% end %>
 
@@ -23,11 +23,7 @@
       <% end %>
 
 
-      <%= link_to test_question_path(question.test,question.position), method: :delete, data: {confirm: 'Вы уверены?'}, class: "btn btn-default" do %>
-          <span class="glyphicon glyphicon-remove"></span>
-      <% end %>
-
-
+      <%= link_to content_tag('i', '', class: 'glyphicon glyphicon-remove'), profile_test_question_path(question.test, question.position), class: "btn btn-default", confirm: "Вы уверены, что хотите удалить вопрос: '#{question.content}'?", remote: true, method: :delete %>
     </div>
     <h3 class="question-title">Вопрос <%= question.position %></h3>
     <div class="question-body">
@@ -35,7 +31,13 @@
     </div>
     <div class="question-options">
       <h4>Варианты ответов:</h4>
-      <%= render partial: "questions/question_options", locals: {question: question} %>
+      <ol>
+        <% for option in question.options %>
+            <li  <%= raw "class='bg-success'" if option.right == true %> >
+              <%= option.content %>
+            </li>
+        <% end %>
+      </ol>
     </div>
 
 </div>

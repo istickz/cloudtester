@@ -1,10 +1,10 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  layout "profile"
+  before_action :set_question_s, only: [:show, :edit, :create, :update, :destroy]
 
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.all
   end
 
   # GET /questions/1
@@ -30,6 +30,7 @@ class QuestionsController < ApplicationController
       if @question.save
         format.html { redirect_to test_question_url(question_params[:test_id],@question.position), notice: 'Вопрос создан успешно.' }
         format.json { render action: 'show', status: :created, location: @question }
+        format.js
       else
         format.html { render action: 'new' }
         format.json { render json: @question.errors, status: :unprocessable_entity }
@@ -44,6 +45,7 @@ class QuestionsController < ApplicationController
       if @question.update(question_params)
         format.html { redirect_to test_question_path(@question.test, @question.position), notice: 'Вопрос обновлен.' }
         format.json { head :no_content }
+        format.js
       else
         format.html { render action: 'edit' }
         format.json { render json: @question.errors, status: :unprocessable_entity }
@@ -55,10 +57,7 @@ class QuestionsController < ApplicationController
   # DELETE /questions/1.json
   def destroy
     @question.destroy
-    respond_to do |format|
-      format.html { redirect_to test_path(@question.test) }
-      format.json { head :no_content }
-    end
+    @questions = @question.test.questions
   end
 
 
@@ -78,8 +77,10 @@ class QuestionsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_question
-      @question = Question.find_by_position(params[:id])
+    def set_question_s
+      @test = Test.find(params[:test_id])
+      @questions = @test.questions
+      @question = @questions.find_by_position(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

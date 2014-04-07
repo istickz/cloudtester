@@ -1,17 +1,58 @@
-<%= simple_form_for([@question.test, @question], url: (test_question_path(@question.test, @question.position) if @question.position)) do |f| %>
-    <%= f.error_notification %>
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
 
-    <div class="form-inputs">
-      <h3>Вопрос: </h3>
-      <%= f.hidden_field :test_id %>
-      <%= f.input :content, as: :text, label: false, :input_html => {class: 'wysihtml5', cols: 50, rows: 5} %>
-    </div>
+    <%= simple_form_for([:profile, @question.test, @question], url: (profile_test_question_path(@question.test, @question.position) if @question.position), remote: true, html: {id: :question_form }) do |f| %>
+        <%= f.error_notification %>
 
-    <h3>Варианты ответов: </h3>
-    <%= render 'question_fields', f: f %>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel"><%= header_msg %></h4>
+        </div>
+        <div class="modal-body">
 
-    <div class="form-actions">
-      <%= f.button :submit %>
-    </div>
+          <div class="form-inputs">
 
-<% end %>
+            <%= f.hidden_field :test_id %>
+            <%= f.input :content, as: :text, label: "Вопрос", :input_html => {class: 'wysihtml5', cols: 50, rows: 5} %>
+          </div>
+
+
+          <%= f.input :user_answer, collection: [[true, 'Пользовательский ответ'], [false, 'Варианты ответов']], as: :radio_buttons, :label_method => :last,
+                      :value_method => :first, label: "Тип ответа:"%>
+
+          <div id='options' style='display:none'>
+            <div class="sticker bg-success"> Вы сами можете подготовить варианты ответов для пользователя </div>
+
+          <h4>Варианты ответов:</h4>
+          <%= f.simple_fields_for :options do |p| %>
+              <div class="form-inputs">
+                <div class="row">
+                  <div class="col-xs-10">
+                    <%= p.input :content, label: false %>
+                  </div>
+                  <div class="col-xs-2">
+                    <%= p.input :right, label: 'Верный', as: :boolean %>
+                  </div>
+                </div>
+              </div>
+          <% end %>
+          </div>
+
+          <div id='user_answer' style='display:none'>
+            <div class="sticker bg-success"> Ответ будет индивидуальным у каждого пользователя </div>
+
+          </div>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+          <%= f.button :submit, class:"btn btn-primary" %>
+        </div>
+
+
+    <% end %>
+
+  </div>
+</div>
+
